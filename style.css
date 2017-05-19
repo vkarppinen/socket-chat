@@ -1,0 +1,15 @@
+#users-list {
+  display: none;
+  position: absolute;
+  top: 2em;
+  right: 2em;
+}
+#users-list span {
+  display: block;
+}
+
+#message-input-area {
+  position: absolute;
+  bottom: 2em;
+  display: none;
+}
