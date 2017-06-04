@@ -7,6 +7,8 @@ $(function () {
     e.preventDefault();
     let nick = $('#nick').val();
     socket.emit('new-user', nick);
+    $('#nick').val('');
+    $('#alert').text('');
     return false;
   });
 
@@ -17,6 +19,17 @@ $(function () {
     socket.emit('new-message', message);
     $('#msg').val('');
     return false;
+  });
+
+  socket.on('username-exists', (msg) => {
+    $('#alert').text(msg);
+  });
+
+  socket.on('registration-success', (msg) => {
+    console.log(msg);
+    $('#users-list').show();
+    $('#message-input-area').show();
+    $('#register').hide();
   });
 
   // render user message
