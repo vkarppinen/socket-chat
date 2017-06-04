@@ -37,6 +37,16 @@ $(function () {
     $('#messages').append($('<li>').text(msg));
   });
 
+  socket.on('update-user-list', (data) => {
+    $('#users-online').empty();
+    for (let user in data) {
+      if (data.hasOwnProperty(user)) {
+        let nick = data[user].name;
+        $('#users-online').append($('<span>').text(nick));
+      }
+    }
+  })
+
   socket.on('user-disconnect', (msg) => {
     // TODO: make android like toast.
     console.log(msg);
