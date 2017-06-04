@@ -22,6 +22,7 @@ io.on('connection', function(socket) {
 
   /** Handle username registration **/
   socket.on('new-user', (name) => {
+    console.log("["+ socket.id + "] new user trying to register: " + name);
     for (var client in clients) {
       if (clients.hasOwnProperty(client)) {
 
@@ -30,11 +31,15 @@ io.on('connection', function(socket) {
           clients[client].user = {
             'name': name
           }
+          console.log("["+ socket.id + "] " + name + " registered succesfully");
+          socket.emit('registration-success', "You are registered as " + name);
+          // TODO: broadcast user data to ALL clients
         }
 
         // if user object exists and nick matches -> "nick name not available"
         else if (clients[client].user.name == name) {
-          // socket.emit('nick-exists', name + " is already in use")
+          console.log("["+ socket.id + "] name already reserved: " + name);
+          socket.emit('username-exists', "username " + name + " is already in use");
           return false;
         }
 
