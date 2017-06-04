@@ -80,7 +80,7 @@ io.on('connection', function(socket) {
 
 function updateAllClients(data) {
   console.log("updating clients with:",  data);
-  io.sockets.emit('update-user-list', users);
+  io.sockets.emit('update-user-list', data);
 }
 
 http.listen(8000, function(){
