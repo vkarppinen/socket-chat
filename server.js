@@ -33,7 +33,6 @@ io.on('connection', function(socket) {
           }
           console.log("["+ socket.id + "] " + name + " registered succesfully");
           socket.emit('registration-success', "You are registered as " + name);
-          // TODO: broadcast user data to ALL clients
         }
 
         // if user object exists and nick matches -> "nick name not available"
@@ -45,6 +44,24 @@ io.on('connection', function(socket) {
 
       }
     }
+    /* Create a users object.
+    users: {
+      martin: {
+        name: 'martin'
+      },
+      et: {
+      name: 'et'
+      }
+    }
+    */
+    let users = {};
+    for (var client in clients) {
+      if (clients[client].user) {
+        users[clients[client].user.name] = clients[client].user;
+      }
+    }
+    // Broadcast to all clients
+    updateAllClients(users);
   });
 
   /** Handle chat message **/
@@ -56,9 +73,15 @@ io.on('connection', function(socket) {
   socket.on('disconnect', function () {
     console.log('deleting client');
     delete clients[socket.id];
+    // TODO: Broadcast users to everybody
   });
 
 });
+
+function updateAllClients(data) {
+  console.log("updating clients with:",  data);
+  io.sockets.emit('update-user-list', users);
+}
 
 http.listen(8000, function(){
   console.log('listening on *:8000');
