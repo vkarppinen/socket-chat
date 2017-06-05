@@ -18,6 +18,7 @@ $(function () {
   $('#msg-sender').submit(function (e) {
     e.preventDefault();
     let message = $('#msg').val();
+    if (message.length <= 0) return false;
     socket.emit('new-message', username + ": " + message);
     $('#msg').val('');
     return false;
