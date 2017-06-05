@@ -73,7 +73,13 @@ io.on('connection', function(socket) {
   socket.on('disconnect', function () {
     console.log('deleting client');
     delete clients[socket.id];
-    // TODO: Broadcast users to everybody
+    let users = {};
+    for (var client in clients) {
+      if (clients[client].user) {
+        users[clients[client].user.name] = clients[client].user;
+      }
+    }
+    updateAllClients(users);
   });
 
 });
