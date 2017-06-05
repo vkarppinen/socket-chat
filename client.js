@@ -17,9 +17,12 @@ $(function () {
   // User sends message
   $('#msg-sender').submit(function (e) {
     e.preventDefault();
-    let message = $('#msg').val();
-    if (message.length <= 0) return false;
-    socket.emit('new-message', username + ": " + message);
+    let data = {
+      user: username,
+      message: $('#msg').val()
+    }
+    if (data.message.length <= 0) return false;
+    socket.emit('new-message', data);
     $('#msg').val('');
     return false;
   });
@@ -37,8 +40,13 @@ $(function () {
   });
 
   // render user message
-  socket.on('new-message', (msg) => {
-    $('#messages').append($('<li>').text(msg));
+  socket.on('new-message', (data) => {
+    let $container = $("<div>", {"class": "message-container"});
+    let $userinfo = $("<div>", {"class": "user"}).html(data.user);
+    let $msg = $("<div>", {"class": "message"}).html(data.message);
+    $userinfo.append($msg);
+    $container.append($userinfo);
+    $('#messages').append($container);
   });
 
   socket.on('update-user-list', (data) => {
