@@ -1,11 +1,13 @@
 $(function () {
 
   var socket = io();
+  let username = "";
 
   /** User registers to chat **/
   $('#register').submit(function (e) {
     e.preventDefault();
     let nick = $('#nick').val();
+    username = nick;
     socket.emit('new-user', nick);
     $('#nick').val('');
     $('#alert').text('');
@@ -16,12 +18,13 @@ $(function () {
   $('#msg-sender').submit(function (e) {
     e.preventDefault();
     let message = $('#msg').val();
-    socket.emit('new-message', message);
+    socket.emit('new-message', username + ": " + message);
     $('#msg').val('');
     return false;
   });
 
   socket.on('username-exists', (msg) => {
+    username = "";
     $('#alert').text(msg);
   });
 
