@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Messages from './messages.js'
+import Messages from './messages.js';
+import UserList from './user-list.js';
 
 class Main extends React.Component {
   render() {
@@ -10,6 +11,7 @@ class Main extends React.Component {
         <h1>Socket chat</h1>
         <hr />
         <Messages />
+        <UserList />
       </div>
     );
   }
