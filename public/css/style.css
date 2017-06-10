@@ -1,6 +1,5 @@
 
 #users-list {
-  display: block;
   position: absolute;
   top: 2em;
   right: 2em;
@@ -12,11 +11,10 @@
 #message-input-area {
   position: absolute;
   bottom: 2em;
-  display: none;
 }
 
 #messages {
-  height: 200px;
+  height: 70vh;
   overflow-y: scroll;
 }
 
