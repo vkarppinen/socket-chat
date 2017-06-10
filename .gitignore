@@ -1,7 +1,11 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
-# dependencies
+# ignore dependencies
 /node_modules
+
+# ignore minimified client code
+/public/js/bundle.min.js
+
 
 # testing
 /coverage
