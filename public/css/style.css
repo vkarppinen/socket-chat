@@ -1,6 +1,6 @@
 
 #users-list {
-  display: none;
+  display: block;
   position: absolute;
   top: 2em;
   right: 2em;
