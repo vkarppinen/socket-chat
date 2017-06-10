@@ -1,0 +1,35 @@
+
+#users-list {
+  display: none;
+  position: absolute;
+  top: 2em;
+  right: 2em;
+}
+#users-list span {
+  display: block;
+}
+
+#message-input-area {
+  position: absolute;
+  bottom: 2em;
+  display: none;
+}
+
+#messages {
+  height: 200px;
+  overflow-y: scroll;
+}
+
+
+#messages .message-container {
+  margin-bottom: 5px;
+  padding: 5px;
+  background: #fafafa;
+  border: 1px solid #eee;
+}
+.message-container .user {
+  font-size: 10px;
+}
+.message-container .message{
+  font-size: 14px;
+}
