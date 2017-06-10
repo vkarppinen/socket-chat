@@ -4,7 +4,8 @@
 /node_modules
 
 # ignore minimified client code
-/public/js/bundle.min.js
+*.min.js
+*.min.css
 
 
 # testing
