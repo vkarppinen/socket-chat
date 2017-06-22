@@ -1,16 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import io from 'socket.io-client';
 
 import RegisterForm from './register-form.js';
 import Messages from './messages.js';
 import UserList from './user-list.js';
 
+let socket = io();
+
 class Main extends React.Component {
+
+  constructor() {
+    super();
+    this.state = {
+      username: ''
+    }
+    this.userNameHandler = this.userNameHandler.bind(this);
+  }
+
+  userNameHandler(name) {
+    this.setState({
+      username: name
+    });
+    // For testing that the username is really changed.
+    // setTimeout(function () {
+    //   console.log(this.state.username);
+    // }, 250);
+  }
+
   render() {
     return (
       <div>
         <h1>Socket chat</h1>
-        <RegisterForm />
+        <RegisterForm userNameHandler={this.userNameHandler}/>
         <hr />
         <Messages />
         <UserList />
@@ -24,20 +46,13 @@ export default Main;
 // TODO: Move all this functionality to components.
 // $(function () {
 
-//   let username = "";
 //
-//   
+//
+//
 //
 //   socket.on('username-exists', (msg) => {
 //     username = "";
 //     $('#alert').text(msg);
-//   });
-//
-//   socket.on('registration-success', (msg) => {
-//     console.log(msg);
-//     $('#users-list').show();
-//     $('#message-input-area').show();
-//     $('#register').hide();
 //   });
 //
 //   // render user message
