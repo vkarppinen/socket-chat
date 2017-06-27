@@ -22,10 +22,6 @@ class Main extends React.Component {
     this.setState({
       username: name
     });
-    // For testing that the username is really changed.
-    // setTimeout(function () {
-    //   console.log(this.state.username);
-    // }, 250);
   }
 
   render() {
