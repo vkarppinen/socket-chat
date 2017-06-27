@@ -22,7 +22,6 @@ class RegisterForm extends React.Component {
        TODO: Here we need also the condition when the chosen nick is reserved
        TODO: $('#alert').text('');
     */
-    console.log("nick:", nick);
     this.props.userNameHandler(nick);
     this.setState({
       input: ''
