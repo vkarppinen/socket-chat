@@ -5,10 +5,11 @@ var path = require('path');
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
+app.set('port', (process.env.PORT || 8000));
 app.use("/", express.static(path.join(__dirname, 'public')));
 
-http.listen(8000, function(){
-  console.log('listening on *:8000');
+http.listen(app.get('port'), function(){
+  console.log("App running in port", app.get('port'));
 });
 
 /*
