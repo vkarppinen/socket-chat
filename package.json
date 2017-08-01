@@ -9,8 +9,7 @@
     "express": "^4.15.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "socket.io": "^2.0.2",
-    "webpack": "^2.6.1"
+    "socket.io": "^2.0.2"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
