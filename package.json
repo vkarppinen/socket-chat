@@ -23,6 +23,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "concurrently --kill-others \"webpack --colors --watch\" \"node server.js\"",
+    "heroku-prebuild": "npm install",
     "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress"
   }
 }
