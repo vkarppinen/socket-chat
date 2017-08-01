@@ -22,6 +22,6 @@
   },
   "scripts": {
     "start": "node server.js",
-    "app": "concurrently --kill-others \"webpack --colors --watch\" \"node server.js\""
+    "dev": "concurrently --kill-others \"webpack --colors --watch\" \"node server.js\""
   }
 }
