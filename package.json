@@ -21,7 +21,7 @@
     "webpack": "^2.6.1"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
     "app": "concurrently --kill-others \"webpack --colors --watch\" \"node server.js\""
   }
 }
