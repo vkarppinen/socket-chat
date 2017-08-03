@@ -69,7 +69,7 @@ io.on('connection', function(socket) {
 
   /** Handle chat message **/
   socket.on('new-message', (data) => {
-    io.emit('new-message', data);
+    socket.broadcast.emit('new-message', data);
   });
 
   /** Handle disconnection **/
