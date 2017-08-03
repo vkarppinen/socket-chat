@@ -18,12 +18,14 @@ class MessageInput extends React.Component {
 
   handleClick() {
     let data = {
-      // TODO: user: username,
+      user: this.props.username,
       message: this.state.input
     };
     if (data.message.length <= 0) return false;
-    // TODO: socket.emit('new-message', data);
-    console.log(data.message);
+    
+    this.props.socket.emit('new-message', data);
+
+    this.props.handleMsg(data)
     this.setState({
       input: ''
     });
