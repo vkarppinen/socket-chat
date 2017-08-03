@@ -13,6 +13,7 @@ class Main extends React.Component {
   constructor() {
     super();
     this.state = {
+      socket: socket,
       username: ''
     }
     this.userNameHandler = this.userNameHandler.bind(this);
@@ -22,13 +23,16 @@ class Main extends React.Component {
     this.setState({
       username: name
     });
+    console.log(name);
   }
 
   render() {
     return (
       <div>
         <h1>Socket chat</h1>
-        <RegisterForm userNameHandler={this.userNameHandler}/>
+        <RegisterForm 
+          socket={this.state.socket}
+          userNameHandler={this.userNameHandler}/>
         <hr />
         <Messages />
         <UserList />
