@@ -23,7 +23,6 @@ class Main extends React.Component {
     this.setState({
       username: name
     });
-    console.log(name);
   }
 
   render() {
@@ -32,9 +31,11 @@ class Main extends React.Component {
         <h1>Socket chat</h1>
         <RegisterForm 
           socket={this.state.socket}
-          userNameHandler={this.userNameHandler}/>
+          userNameHandler={this.userNameHandler} />
         <hr />
-        <Messages />
+        <Messages 
+          socket={this.state.socket}
+          username={this.state.username} />
         <UserList />
       </div>
     );
