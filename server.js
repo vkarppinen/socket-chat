@@ -26,7 +26,7 @@ io.on('connection', function(socket) {
   /** Handle username registration **/
   socket.on('new-user', (name) => {
     console.log("["+ socket.id + "] new user trying to register: " + name);
-    for (var client in clients) {
+    for (let client in clients) {
       if (clients.hasOwnProperty(client)) {
 
         // if no user object exist on the client -> register
@@ -58,7 +58,7 @@ io.on('connection', function(socket) {
     }
     */
     let users = {};
-    for (var client in clients) {
+    for (let client in clients) {
       if (clients[client].user) {
         users[clients[client].user.name] = clients[client].user;
       }
