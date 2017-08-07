@@ -14,15 +14,23 @@ class Main extends React.Component {
     super();
     this.state = {
       socket: socket,
-      username: ''
+      username: '',
+      userlist: {},
     }
     this.userNameHandler = this.userNameHandler.bind(this);
+    this.userlistHandler = this.userlistHandler.bind(this);
   }
 
   userNameHandler(name) {
     this.setState({
       username: name
     });
+  }
+
+  userlistHandler(users) {
+    this.setState({
+      userlist: users
+    })
   }
 
   render() {
