@@ -21,8 +21,8 @@
     "webpack": "^2.6.1"
   },
   "scripts": {
-    "start": "node server.js",
-    "dev": "concurrently --kill-others \"webpack --colors --watch\" \"node server.js\"",
+    "dev": "node server.js",
+    "watch": "webpack --colors --watch",
     "heroku-prebuild": "npm install",
     "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress"
   }
