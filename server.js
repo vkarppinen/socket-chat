@@ -47,24 +47,16 @@ io.on('connection', function(socket) {
 
       }
     }
-    /* Create a users object.
-    users: {
-      martin: {
-        name: 'martin'
-      },
-      et: {
-      name: 'et'
-      }
-    }
-    */
-    let users = {};
+    
+    // TODO: Make user class, that is used within the userlist
+    let userlist = [];
     for (let client in clients) {
       if (clients[client].user) {
-        users[clients[client].user.name] = clients[client].user;
+        userlist.push(clients[client].user);
       }
     }
     // Broadcast to all clients
-    updateAllClients(users);
+    updateAllClients(userlist);
   });
 
   /** Handle chat message **/
@@ -76,18 +68,19 @@ io.on('connection', function(socket) {
   socket.on('disconnect', function () {
     console.log('deleting client');
     delete clients[socket.id];
-    let users = {};
-    for (var client in clients) {
+    let userlist = [];
+    for (let client in clients) {
       if (clients[client].user) {
-        users[clients[client].user.name] = clients[client].user;
+        userlist.push(clients[client].user);
       }
     }
-    updateAllClients(users);
+    updateAllClients(userlist);
+    // TODO: create a emit that the specific user disconnected. "user has disconnected..."
   });
 
 });
 
 function updateAllClients(data) {
   console.log("updating clients with:",  data);
-  io.sockets.emit('update-user-list', data);
+  io.sockets.emit('update-userlist', data);
 }
