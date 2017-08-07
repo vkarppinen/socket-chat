@@ -15,7 +15,7 @@ class Main extends React.Component {
     this.state = {
       socket: socket,
       username: '',
-      userlist: {},
+      userlist: [],
     }
     this.userNameHandler = this.userNameHandler.bind(this);
     this.userlistHandler = this.userlistHandler.bind(this);
@@ -28,9 +28,9 @@ class Main extends React.Component {
   }
 
   userlistHandler(users) {
-    this.setState({
-      userlist: users
-    })
+     this.setState({
+        userlist: users
+    });
   }
 
   render() {
@@ -44,8 +44,9 @@ class Main extends React.Component {
         <Messages 
           socket={this.state.socket}
           username={this.state.username} />
-        <UserList 
+        <UserList
           socket={this.state.socket}
+          userlistHandler={this.userlistHandler} 
           userlist={this.state.userlist} />
       </div>
     );
@@ -75,16 +76,6 @@ export default Main;
 //     $container.append($userinfo);
 //     $('#messages').append($container);
 //   });
-//
-//   socket.on('update-user-list', (data) => {
-//     $('#users-online').empty();
-//     for (let user in data) {
-//       if (data.hasOwnProperty(user)) {
-//         let nick = data[user].name;
-//         $('#users-online').append($('<span>').text(nick));
-//       }
-//     }
-//   })
 //
 //   socket.on('user-disconnect', (msg) => {
 //     // TODO: make android like toast.
