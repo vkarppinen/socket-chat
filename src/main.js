@@ -44,7 +44,9 @@ class Main extends React.Component {
         <Messages 
           socket={this.state.socket}
           username={this.state.username} />
-        <UserList />
+        <UserList 
+          socket={this.state.socket}
+          userlist={this.state.userlist} />
       </div>
     );
   }
