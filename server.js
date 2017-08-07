@@ -9,7 +9,7 @@ app.set('port', (process.env.PORT || 8000));
 app.use("/", express.static(path.join(__dirname, 'public')));
 
 http.listen(app.get('port'), function(){
-  console.log("App running in port", app.get('port'));
+  console.log("Node server running in port :" + app.get('port'));
 });
 
 /*
