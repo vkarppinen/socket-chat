@@ -21,7 +21,6 @@ class RegisterForm extends React.Component {
     this.props.socket.emit('new-user', nick);
 
     this.props.socket.on('registration-success', (msg) => {
-      console.log(msg);
       this.setState({
         registrationError: '',
         registrationSuccess: msg
@@ -31,17 +30,10 @@ class RegisterForm extends React.Component {
     });
 
     this.props.socket.on('username-exists', (msg) => {
-      console.log(msg);
       this.setState({
         registrationError: msg
       });
     });
-
-    // TODO: Here we need also the condition when the chosen nick is reserved
-    //    TODO: $('#alert').text('');
-
-    // Only if the username is not reserved.
-    // this.props.username = nick;
 
     this.setState({
       input: ''
